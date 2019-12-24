@@ -1,0 +1,14 @@
+<sly data-sly-use.multifield="com.assignment.core.models.ArticleList">
+	<div class="articlelist--list">
+     <sly data-sly-list.items="${multifield.article.listChildren}">
+			<div class="articlelist--item articlelist--noimg-item">
+            	<img class="articlelist--img articlelist--noimg-img" src="${items.articleimg}">
+                <h2 class="articlelist--title articlelist--noimg-title">${items.articletitle}</h2>
+                <p class="articlelist--desc articlelist--noimg-desc">${items.desc}</p>
+                <sly data-sly-test="items.articlepg">
+					<a class="articlelist--pagelink articlelist--noimg-pagelink" href="${items.articlepg}">${items.linkdis} &#8594;</a>
+                </sly>
+            </div>
+     </sly>
+     </div>
+</sly>
