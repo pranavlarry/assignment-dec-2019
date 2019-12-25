@@ -5,9 +5,12 @@
             	<img class="articlelist--img articlelist--noimg-img" src="${items.articleimg}">
                 <h2 class="articlelist--title articlelist--noimg-title">${items.articletitle}</h2>
                 <p class="articlelist--desc articlelist--noimg-desc">${items.desc}</p>
-                <sly data-sly-test="items.articlepg">
+                <div class="articlelist--user" data-sly-test="${items.articlepg}">
+                    <sly data-sly-test="${items.newsauthor}">
+						<p class="articlelist--username">${items.newsauthor}</p>
+                    </sly>
 					<a class="articlelist--pagelink articlelist--noimg-pagelink" href="${items.articlepg}">${items.linkdis} &#8594;</a>
-                </sly>
+                </div>
             </div>
      </sly>
      </div>

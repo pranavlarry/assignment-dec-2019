@@ -1,11 +1,15 @@
 .articlelist--list {
 	display: flex;
     justify-content: center;
+
+}
+
+.articlelist--item {
+	font-family: 'Lato', sans-serif;
 }
 .articlelist--noimg {
 
     .articlelist--item {
-		font-family: 'Lato', sans-serif;
         padding: 15px 15px 50px 15px;
         max-width: 440px;
     }
@@ -47,8 +51,7 @@
 .articlelist--img {
 
 	.articlelist--item {
-		padding: 0 20px;
-    	font-family: 'lato';
+		padding: 30px 20px 125px 30px;
         width: 285px
     }
 
@@ -75,5 +78,45 @@
 }
 
 .articlelist--news {
-	
+    .articlelist--item {
+        padding: 30px 20px 125px 30px;
+		width: 385px;
+    }
+	  .articlelist--img {
+		width: 385px;
+    }
+
+    .articlelist--title {
+		color: #313a48;
+    	font-size: 18px;
+    }
+
+    .articlelist--desc {
+		color: #666666;
+    	font-size: 15px;
+    }
+
+    .articlelist--user{
+		display: flex;
+        background: #f6f6f6;
+        max-width: 355px;
+        min-height: 30px;
+
+
+    }
+
+    .articlelist--username {
+			margin: 0;
+            /* width: 50%; */
+            color: #8e8e8e;
+            font-size: 12px;
+            padding: 7px 5px;
+        }
+
+    .articlelist--pagelink {
+		font-size: 12px;
+        color: #30afb8;
+        text-decoration: none;
+        padding: 7px 0px 7px 190px;
+    }
 }
