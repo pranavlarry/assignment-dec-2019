@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.assignment.core.service.HandleForm;
+import com.assignment.core.service.SqlConnectionService;
 //Add the DataSourcePool package
-import com.day.commons.datasource.poolservice.DataSourcePool;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -19,16 +19,15 @@ import java.sql.Statement;
   
   
 import java.sql.SQLException;
-import javax.sql.DataSource;
  
 @Component
 public class HandleFormImp implements HandleForm{
      
     /** Default log. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
-     
+    
     @Reference
-    private DataSourcePool source;
+    private SqlConnectionService sqlConnectionService;
   
     //Inject the Form Data into a database! 
     @Override
@@ -47,7 +46,7 @@ public class HandleFormImp implements HandleForm{
                           
               // Create a Connection object
         	try {
-              c =  getConnection();
+              c =  sqlConnectionService.getConnection("LariMySql");
         	}catch (Exception e) {
               	 StringWriter sw = new StringWriter();
                  e.printStackTrace(new PrintWriter(sw));
@@ -109,29 +108,5 @@ public class HandleFormImp implements HandleForm{
     }
         
   }
- 
-  //Returns a connection using the configured DataSourcePool 
-    private Connection getConnection()
-    {
-             DataSource dataSource = null;
-             Connection con = null;
-             try
-             {
-                 //Inject the DataSourcePool right here! 
-                 dataSource = (DataSource) source.getDataSource("LariMySql");
-                 con = dataSource.getConnection();
-                 return con;
-                   
-               }
-             catch (Exception e)
-             {
-            	 StringWriter sw = new StringWriter();
-                 e.printStackTrace(new PrintWriter(sw));
-                 String exceptionAsString = sw.toString();
-                 //e.printStackTrace(); 
-                 log.debug("3--->"+exceptionAsString);
-             }
-                 return null; 
-    }
            
   }

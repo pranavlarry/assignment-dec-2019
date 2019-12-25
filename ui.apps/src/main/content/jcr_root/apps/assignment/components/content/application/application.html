@@ -1,0 +1,21 @@
+<sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}">
+    <sly data-sly-call="${clientLib.all @ categories='application'}">
+    </sly>
+<sly>
+<table class="applicationlist" style="width:100%">
+  <tr class="title">
+    <th>Date</th>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Nationality</th>
+    <th>Gender</th>
+    <th>18 years or older</th>
+    <th>Worked on board ships before</th>
+    <th>Ever been part of our team</th>
+    <th>A friend or relative working with us</th>
+    <th>Areas Of Interest</th>
+    <th>How did you learn about this job</th>
+    <th>Status</th>
+  </tr>
+</table>
+<button class="submit" onclick="submitstatus()">Submit</button>

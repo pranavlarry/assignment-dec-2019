@@ -33,8 +33,10 @@ public class MySqlSevlet extends SlingAllMethodsServlet{
 	 @Override
 	    protected void doPost(final SlingHttpServletRequest req,
 	            final SlingHttpServletResponse resp) throws ServletException, IOException {
-		 String data=req.getParameter("param1");
-		 LOGGER.debug(data);
+
+		 
+		 
+		 //LOGGER.debug(data);
 	 }
 	
 }
