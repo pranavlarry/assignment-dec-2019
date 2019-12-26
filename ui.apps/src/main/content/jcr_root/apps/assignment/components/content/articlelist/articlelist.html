@@ -2,7 +2,12 @@
 	<div class="articlelist--list">
      <sly data-sly-list.items="${multifield.article.listChildren}">
 			<div class="articlelist--item articlelist--noimg-item">
-            	<img class="articlelist--img articlelist--noimg-img" src="${items.articleimg}">
+				<div class="articlelist--imgcontainer">
+            		<img class="articlelist--img articlelist--noimg-img" src="${items.articleimg}">
+					<sly data-sly-test="${items.newsDate}">
+<div class="articlelist--date" data-sly-use.date="${'com.assignment.core.models.GetDateModel' @ date=items.newsDate}">${date.formatedDate}</div>
+					</sly>
+				</div>
                 <h2 class="articlelist--title articlelist--noimg-title">${items.articletitle}</h2>
                 <p class="articlelist--desc articlelist--noimg-desc">${items.desc}</p>
                 <div class="articlelist--user" data-sly-test="${items.articlepg}">
