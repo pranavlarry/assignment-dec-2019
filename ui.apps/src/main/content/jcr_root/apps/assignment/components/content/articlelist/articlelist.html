@@ -9,7 +9,13 @@
                     <sly data-sly-test="${items.newsauthor}">
 						<p class="articlelist--username">${items.newsauthor}</p>
                     </sly>
-					<a class="articlelist--pagelink articlelist--noimg-pagelink" href="${items.articlepg}">${items.linkdis} &#8594;</a>
+					<sly data-sly-test="${items.articlepg && items.linkdis}">
+						<a class="articlelist--pagelink articlelist--noimg-pagelink" href="${items.articlepg}">${items.linkdis}
+							<sly data-sly-test="${!items.newsauthor}">
+								&#8594;
+							</sly>
+						</a>
+					</sly>
                 </div>
             </div>
      </sly>

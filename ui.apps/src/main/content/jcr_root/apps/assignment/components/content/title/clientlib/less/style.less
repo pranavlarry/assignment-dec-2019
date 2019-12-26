@@ -1,0 +1,65 @@
+.cmp-title__underline {
+	display:none;
+}
+
+.fa.fa-heartbeat{
+	color: #30afb8;
+}
+
+.show--heartfirst {
+	.cmp-title__underline {
+		display: block;
+    }
+
+    .cmp-title__underline::after {
+		content:"";
+        background-color: black;
+        width: 100px;
+        height: 2px;
+        position: absolute;
+        margin: 7px 5px;
+    }
+
+}
+
+.show--heartmiddle {
+	.cmp-title__underline {
+		display: block;
+        width: 115px;
+    	position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+    .cmp-title__underline::before {
+        content: "";
+        background-color: black;
+        width: 40px;
+        height: 2px;
+        position: absolute;
+        margin: 7px 5px;
+        left: 0;
+    }
+
+    .cmp-title__underline::after {
+    	content: "";
+        background-color: black;
+        width: 40px;
+        height: 2px;
+        position: absolute;
+        margin: 7px 5px;
+        right: 0;
+    }
+
+    .fa.fa-heartbeat{
+		position: absolute;
+    	left: 44%;
+	}
+
+    .cmp-title {
+        text-align: center;
+        font-family: "lato";
+    }
+
+}
