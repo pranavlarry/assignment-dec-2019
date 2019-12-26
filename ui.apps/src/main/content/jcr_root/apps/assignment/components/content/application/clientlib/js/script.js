@@ -14,6 +14,7 @@ function dropdown(obj){
     }
 };
 
+
 $(document).on('change','.statuschange',function(){
 	$(".submit").removeAttr("disabled");
 	var val=$(this).val();
@@ -42,6 +43,7 @@ function checkstatus(id,status){
     }
 }
 
+
 function submitstatus(){
 	    $.ajax({
           url: "/bin/MySql",
@@ -59,8 +61,9 @@ function submitstatus(){
 
 }
 
+
 function getdata() {
-    $('.applicationlist').find('tbody').remove();
+    $('tr').not('.title').remove();
     $('#test').empty();
     $(".submit").prop("disabled","true");
 	        $.ajax({
