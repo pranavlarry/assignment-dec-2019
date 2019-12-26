@@ -13,7 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.assignment.core.models.ApplicationForm;
 import com.assignment.core.service.MySqlGetDataService;
@@ -79,6 +80,14 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
               }
       }
 		
+	   Collections.sort(applicationForm, new Comparator<ApplicationForm>() {
+			@Override
+			public int compare(ApplicationForm a1, ApplicationForm a2) {
+				// TODO Auto-generated method stub
+				return a2.getDate().compareTo(a1.getDate());
+			}
+        });
+		
 		return applicationForm;
 		
 		
@@ -108,8 +117,15 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	        PreparedStatement ps = null; 
 	        String query = null;
 	        for(int i=0;i<id.length;i++) {
-	        	query+="UPDATE applicationform.application SET status='"+status[i]+"' WHERE id = '"+id[i]+"';";
+	        	if(query != null) {
+	        		
+	        		query+="UPDATE applicationform.application SET status='"+status[i]+"' WHERE id = '"+id[i]+"';";
+	        	}
+	        	else {
+	        		query ="UPDATE applicationform.application SET status='"+status[i]+"' WHERE id = '"+id[i]+"';";
+	        	}
 	        }
+	        log.debug(query);
 	        pstmt = c.prepareStatement(query);
 	        pstmt.executeUpdate();
 		

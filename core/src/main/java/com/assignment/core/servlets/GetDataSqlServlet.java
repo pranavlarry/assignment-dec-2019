@@ -24,9 +24,8 @@ import com.assignment.core.service.MySqlGetDataService;
 @Component(service=Servlet.class,
 property={
         Constants.SERVICE_DESCRIPTION + "=Simple Demo Servlet",
-        "sling.servlet.methods=" + HttpConstants.METHOD_POST,
-        "sling.servlet.paths="+ "/bin/MySql",
-        "sling.servlet.extensions=" + "txt"
+        "sling.servlet.methods=" +HttpConstants.METHOD_GET+ HttpConstants.METHOD_POST,
+        "sling.servlet.paths="+ "/bin/MySql"
 })
 public class GetDataSqlServlet extends SlingAllMethodsServlet {
 	
@@ -66,9 +65,9 @@ public class GetDataSqlServlet extends SlingAllMethodsServlet {
     protected void doPost(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
 		
-	 String[] id= req.getParameterValues("id");
-	 String[] status=req.getParameterValues("status");
-	 log.debug("id-->"+id+" status-->"+status);
+	 String[] id= req.getParameterValues("id[]");
+	 String[] status=req.getParameterValues("status[]");
+	 //log.debug("id-->"+id[0]+" status-->"+status[0]);
 	 mySqlGetDataService.setStatus(id,status);
 	 //LOGGER.debug(data);
  }

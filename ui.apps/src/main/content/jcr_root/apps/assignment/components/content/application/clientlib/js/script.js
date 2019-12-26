@@ -28,6 +28,8 @@ $(document).on('change','.statuschange',function(){
 			updateid.push(id);
             updateval.push(val);
         }
+        console.log(updateid);
+        console.log(updateval);
     }
 });
 
@@ -51,9 +53,10 @@ function submitstatus(){
              },
            success: function(resp){
 				console.log('success');
+                   getdata();
        		}
         });
-    getdata();
+
 }
 
 function getdata() {
