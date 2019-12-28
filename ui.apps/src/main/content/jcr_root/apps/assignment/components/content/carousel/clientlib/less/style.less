@@ -1,12 +1,3 @@
-
-.cmp-carousel__actions {
-	display: none;
-}
-
-.cmp-carousel__indicators {
-	display: none !important;
-}
-
 .HeroImage--discription {
 	font-family: 'Lato', sans-serif;
     position: absolute;
@@ -39,4 +30,39 @@
 
 .cmp-carousel__content {
 	z-index:-1;
+}
+
+.cmp-carousel {
+    z-index: 1;
+}
+
+.cmp-carousel:hover {
+	.cmp-carousel-btn{
+		opacity: .5;
+    }
+}
+
+.cmp-carousel-button {
+	font-size: 140px;
+    color: #A6A27E;
+}
+
+
+.cmp-carousel-btn {
+	position: absolute;
+    top: 145px;
+    opacity:0;
+}
+
+.cmp-carousel-prev {
+	left: 0;
+}
+
+.cmp-carousel-next {
+	right:0;
+}
+
+.cmp-carousel-prev:hover,.cmp-carousel-next:hover {
+	 cursor: pointer;
+    opacity:1;
 }

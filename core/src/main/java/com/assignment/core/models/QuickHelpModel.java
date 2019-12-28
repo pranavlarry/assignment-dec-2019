@@ -31,6 +31,7 @@ public class QuickHelpModel {
 	protected void init() {
 		log.debug("nothing wrong here2");
 		title=resolver.getResource(quickhelpLink).getName();
+		title=title.replace("-", " ");
 		log.debug("heool-->"+title);
 	}
 

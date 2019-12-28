@@ -71,18 +71,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <myCheckbox
-                                                granite:class="cq-dialog-checkbox-showhide"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                                                checked="true"
-                                                name="./recentPost"
-                                                text="Hide Recent Post"
-                                                value="true">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    cq-dialog-checkbox-showhide-target=".recentposttogglefield"/>
-                                            </myCheckbox>
                                             <RecentPostGrp
                                                 granite:class="recentposttogglefield"
                                                 jcr:primaryType="nt:unstructured"
@@ -138,18 +126,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <myCheckbox
-                                                granite:class="cq-dialog-checkbox-showhide"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                                                checked="true"
-                                                name="./recentPost"
-                                                text="Hide Recent Post"
-                                                value="true">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    cq-dialog-checkbox-showhide-target=".quickhelptogglefield"/>
-                                            </myCheckbox>
                                             <quickHelpGrp
                                                 granite:class="quickhelptogglefield"
                                                 jcr:primaryType="nt:unstructured"
@@ -190,6 +166,67 @@
                             </columns>
                         </items>
                     </QuickHelp>
+                    <tags
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Tags"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <tagGrp
+                                                granite:class="quickhelptogglefield"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <tagMulti
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                        composite="{Boolean}true"
+                                                        eaem-show-on-collapse="EAEM.showProductName"
+                                                        fieldLabel="Posts">
+                                                        <field
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                            name="./tag">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <column
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <tagTitle
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldDescription="Enter the title of tag"
+                                                                            fieldLabel="title of tag"
+                                                                            name="./tagTitle"/>
+                                                                        <Link
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                            fieldDescription="Select Tag links"
+                                                                            fieldLabel="Tag links"
+                                                                            name="./tagLink"
+                                                                            rootPath="/content"/>
+                                                                    </items>
+                                                                </column>
+                                                            </items>
+                                                        </field>
+                                                    </tagMulti>
+                                                </items>
+                                            </tagGrp>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </tags>
                 </items>
             </tabs>
         </items>

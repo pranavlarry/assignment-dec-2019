@@ -9,7 +9,7 @@
             <h3 class="footer--heading">Recent Post</h3>
             <ul class="footer--list">
                 <sly data-sly-list.link="${footer.postLinks}">
-                    <li><a href="${link.recentPostLink}" class="footer--link">${link.title}</a>
+                    <li><a href="${link.recentPostLink}" class="footer--rlink footer--link">${link.title}</a>
                 </sly>
             </ul>
         </div>
@@ -17,25 +17,14 @@
             <h3 class="footer--heading">Quick Help</h3>
             <ul class="footer--list">
                 <sly data-sly-list.link="${footer.helpLinks}">
-                    <li><a href="${link.quickhelpLink}" class="footer--link">${link.title}</a>
+                    <li><a href="${link.quickhelpLink}" class="footer--qlink footer--link">${link.title}</a>
                 </sly>
             </ul>
         </div>
         <div  class="footer--section">
 			<h3 class="footer--heading">Tags</h3>
-			<div class="footer--tagcontainer">
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/ambulance/" class="footer--tag" aria-label="ambulance (1 item)">ambulance</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/care/" class="footer--tag" aria-label="care (1 item)">care</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/drugs/" class="footer--tag" aria-label="drugs (1 item)">drugs</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/emergency/" class="footer--tag" aria-label="emergency (1 item)">emergency</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/experiment/" class="footer--tag" aria-label="experiment (1 item)">experiment</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/health/" class="footer--tag" aria-label="health (1 item)">health</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/hospital/" class="footer--tag" aria-label="hospital (1 item)">hospital</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/lab/" class="footer--tag" aria-label="lab (1 item)">lab</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/medical/" class="footer--tag" aria-label="medical (1 item)">medical</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/medicines/" class="footer--tag" aria-label="medicines (1 item)">medicines</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/patient/" class="footer--tag" aria-label="patient (1 item)">patient</a></p>
-                <p class="footer--tagp"><a href="https://demo.themegrill.com/flash-pro-health/tag/test/" class="footer--tag" aria-label="test (1 item)">test</a></p>
+    		<div class="footer--tagcontainer" data-sly-list.tag="${footer.tag.listChildren}">
+    			<p class="footer--tagp"><a href="${tag.tagLink}" class="footer--tag">${tag.tagTitle}</a></p>
 			</div>
         </div>
     </footer>

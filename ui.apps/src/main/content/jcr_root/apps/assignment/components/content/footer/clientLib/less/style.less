@@ -28,12 +28,19 @@
 
 .footer--list {
 	padding-left: 25px;
+    position:relative;
+    list-style-type: none;
 }
 
 .footer--link {
 	color: white;
     text-decoration: none;
     line-height: 3;
+    font-size: 14px;
+
+}
+
+.footer--rlink {
     text-transform: uppercase;
 }
 
@@ -53,4 +60,25 @@
     font-size: 16px;
     border: 1px solid;
     padding:5px 12px;;
+}
+.footer--rlink::before {
+	content: "\" /*rtl:"\"*/;
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 0;
+    padding-top: 3.5px;
+    font-size: 12px;
+}
+
+.footer--qlink::before {
+	content: '\f1db';
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    padding-top: 4px;
+}
+
+.footer--qlink::first-letter {
+	text-transform: uppercase;
 }

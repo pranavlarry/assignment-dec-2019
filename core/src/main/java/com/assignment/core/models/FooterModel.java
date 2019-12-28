@@ -25,6 +25,10 @@ public class FooterModel {
 	@Optional
 	private Resource quickhelp;
 	
+	@Inject
+	@Optional
+	private Resource tag;
+	
 	private ArrayList<RecentPostModel> recentPostList;
 	private ArrayList<QuickHelpModel> quickHelpList;
 	
@@ -53,6 +57,10 @@ public class FooterModel {
 	
 	public ArrayList<QuickHelpModel> getHelpLinks() {
 		return quickHelpList;
+	}
+	
+	public Resource getTag() {
+		return tag;
 	}
 		
 }

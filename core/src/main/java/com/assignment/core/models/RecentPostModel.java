@@ -31,6 +31,7 @@ public class RecentPostModel {
 	protected void init() {
 		log.debug("nothing wrong here3");
 		title=resolver.getResource(recentPostLink).getName();
+		title=title.replace("-", " ");
 	}
 
 	public String getRecentPostLink() {
