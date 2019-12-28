@@ -17,9 +17,9 @@
                     </sly>
 					<sly data-sly-test="${items.articlepg && items.linkdis}">
 						<a class="articlelist--pagelink articlelist--noimg-pagelink" href="${items.articlepg}">${items.linkdis}
-							<sly data-sly-test="${!items.newsauthor}">
+							<span class="articlelist--arrow" data-sly-test="${!items.newsauthor}">
 								&#8594;
-							</sly>
+							</span>
 						</a>
 					</sly>
                 </div>

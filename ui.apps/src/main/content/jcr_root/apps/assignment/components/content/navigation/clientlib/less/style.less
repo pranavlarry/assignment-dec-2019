@@ -27,11 +27,32 @@ body{
         margin: 0 15px;
         font-size: 17px;
         font-family: 'Lato', sans-serif;
+    	position: relative;
     }
     
     .cmp-navigation__item-link:hover{
         color:#35c2cc;
     }
+
+	.cmp-navigation__item-link:hover::before ,.cmp-navigation__item-link:hover::after {
+  		width: 50%;
+	}
+
+	.cmp-navigation__item-link::before,.cmp-navigation__item-link::after{
+		  content: "";
+          bottom: 0;
+          width: 0px;
+          height: 2px;
+          display: block;
+          position: absolute;
+          background-color: #35c2cc;
+          -webkit-transition: all 0.3s ease-in-out;
+                  transition: all 0.3s ease-in-out;  
+	}
+
+	.cmp-navigation__item-link::before { right: 50%; }
+
+	.cmp-navigation__item-link::after {left: 50%;}
 
 	.navigation--logo {
 		margin: 15px 40px;
