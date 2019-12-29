@@ -31,18 +31,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <myCheckbox
-                                                granite:class="cq-dialog-checkbox-showhide"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                                                checked="true"
-                                                name="./recentPost"
-                                                text="New component"
-                                                value="false">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    cq-dialog-checkbox-showhide-target=".newstogglefield"/>
-                                            </myCheckbox>
                                             <article
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

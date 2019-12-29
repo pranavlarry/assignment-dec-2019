@@ -11,13 +11,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 import com.assignment.core.models.ApplicationForm;
 import com.assignment.core.service.MySqlGetDataService;
+import com.assignment.core.service.SendEmailService;
 import com.assignment.core.service.SqlConnectionService;
 
 @Component(service=MySqlGetDataService.class,immediate=true)
@@ -27,6 +27,9 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	
 	@Reference
 	private SqlConnectionService sqlConnectionService;
+	
+	@Reference
+	private SendEmailService sendEmailService;
 	
 	@Override
     public void insert(String firstName,String lastName,String nationality,String gender,String age,String gotSeaLegs,String partOfOurTeam,String friendOrRelativeWorkingWithUs,String areasOfInterest,String learnAboutThisJob){
@@ -68,7 +71,18 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
                ps.setString(10,learnAboutThisJob);
                ps.setString(11, "new");
                ps.execute();
-                
+               
+               String msg= "New Application Alert: \n"+
+            		   "First Name: "+firstName +"\n"+
+            		   "Last Name: "+lastName  +"\n" +
+            		   "Nationality: "+ nationality  +"\n"+
+            		   "Gender: "+ gender  +"\n"+
+            		   "You've worked on board ships before: "+ gotSeaLegs +"\n" +
+		               "Ever been a part of Our Team: "+ partOfOurTeam +"\n"+
+		               "Friend or relative working with us: "+ friendOrRelativeWorkingWithUs +"\n"+
+		               "Area of Interest: "+ areasOfInterest +"\n"+
+		               "How did you learn about this job: "+ learnAboutThisJob +"\n";
+               sendEmailService.sendMail(msg);
         }
         catch (Exception e) {
        	 StringWriter sw = new StringWriter();
@@ -175,7 +189,6 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	               //e.printStackTrace(); 
 	               log.debug("now what---->"+exceptionAsString);
 	               }
-			ResultSet rs = null;
 
 	        PreparedStatement pstmt = null;
 	        String query = null;

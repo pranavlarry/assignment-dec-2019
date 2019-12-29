@@ -57,8 +57,9 @@ public class GetDataSqlServlet extends SlingAllMethodsServlet {
 			 
 		 }
 		 else if(request.equals("validate")) {
-			 String firstName = req.getParameter("firsrName");
+			 String firstName = req.getParameter("firstName");
 			 String lastName =req.getParameter("lastName");
+			 log.debug(firstName+" "+lastName);
 			 applicationForm= mySqlGetDataService.getData("SELECT * FROM applicationform.application WHERE firstName = '"+firstName+"' AND lastName = '"+lastName+"';");
 			 try {
 				obj.put("data",applicationForm);
