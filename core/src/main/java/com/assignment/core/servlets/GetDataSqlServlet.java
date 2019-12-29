@@ -43,18 +43,30 @@ public class GetDataSqlServlet extends SlingAllMethodsServlet {
 	@Override
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
-	 String date=req.getParameter("date");
-	 applicationForm=new ArrayList<>();
-	 JSONObject obj=new JSONObject();
-	 if(date==null) {
-		 applicationForm=mySqlGetDataService.getData("SELECT * FROM applicationform.application");
-		 try {
-			obj.put("data",applicationForm);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
+		 String request = req.getParameter("req");
+		 applicationForm=new ArrayList<>();
+		 JSONObject obj=new JSONObject();
+		 if(request==null) {
+			 applicationForm=mySqlGetDataService.getData("SELECT * FROM applicationform.application");
+			 try {
+				obj.put("data",applicationForm);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+		 }
+		 else if(request.equals("validate")) {
+			 String firstName = req.getParameter("firsrName");
+			 String lastName =req.getParameter("lastName");
+			 applicationForm= mySqlGetDataService.getData("SELECT * FROM applicationform.application WHERE firstName = '"+firstName+"' AND lastName = '"+lastName+"';");
+			 try {
+				obj.put("data",applicationForm);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			
+			}
 	 }
 	 
 	 resp.setContentType("application/json");
@@ -64,7 +76,6 @@ public class GetDataSqlServlet extends SlingAllMethodsServlet {
 	@Override
     protected void doPost(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
-		
 	 String[] id= req.getParameterValues("id[]");
 	 String[] status=req.getParameterValues("status[]");
 	 //log.debug("id-->"+id[0]+" status-->"+status[0]);

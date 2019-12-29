@@ -1,3 +1,7 @@
+<sly  data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}">
+    <sly  data-sly-call="${clientLib.all @ categories='articlelist'}">
+    </sly>
+</sly>
 <sly data-sly-use.multifield="com.assignment.core.models.ArticleList">
 	<div class="articlelist--list">
      <sly data-sly-list.items="${multifield.article.listChildren}">

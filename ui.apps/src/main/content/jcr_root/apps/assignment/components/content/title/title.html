@@ -13,6 +13,10 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly  data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}">
+    <sly  data-sly-call="${clientLib.all @ categories='title'}">
+    </sly>
+</sly>
 <div class="cmp-title"
      data-sly-use.title="com.adobe.cq.wcm.core.components.models.Title"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"

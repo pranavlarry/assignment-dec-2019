@@ -1,10 +1,17 @@
+alert("hello");
+function validateForm(firstName,lastName) {
+    alert("hello");
+    console.log(firstName + " " + lastName );
+	 $.ajax({
+          url: "/bin/MySql?req=validate",
+          method:'GET',
+          data: {
+                 'firstName': firstName,
+              'lastName': lastName
+          },
+          success: function(resp){
+				console.log(resp);
 
-alert("hey");
-function validateForm(guideBridge) {
-    alert("called");
-    console.log("hey");
-	var som = guide[0].guide1[0].guideRootPanel[0].firstName[0];
-    var eligibilityAmountComp = guideBridge.resolveNode(som);
-
-	//alert(eligibilityAmountComp.value);
+       		}
+     });
 }

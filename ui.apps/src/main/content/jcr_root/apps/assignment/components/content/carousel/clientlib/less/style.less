@@ -1,5 +1,5 @@
 .HeroImage--discription {
-	font-family: 'Lato', sans-serif;
+	//font-family: 'Lato', sans-serif;
     position: absolute;
     bottom: 14vw;
     left: 24vw;
@@ -65,4 +65,41 @@
 .cmp-carousel-prev:hover,.cmp-carousel-next:hover {
 	 cursor: pointer;
     opacity:1;
+}
+
+.carousel {
+	position: relative;
+}
+
+
+.cmp-carousel__action {
+	background: none;
+    border: none;
+    position: absolute;
+    top: 270px;
+    font-size: 100px;
+    opacity:0;
+    outline: none;
+}
+
+.cmp-carousel__action--previous {
+	left:0;
+}
+
+.cmp-carousel__action--next{
+	right:0;
+}
+
+.carousel:hover {
+	.cmp-carousel__action {
+		opacity:0.5;
+    }
+}
+
+.cmp-carousel__action:hover {
+		opacity:1;
+}
+
+.cmp-image {
+	height: 633px;
 }

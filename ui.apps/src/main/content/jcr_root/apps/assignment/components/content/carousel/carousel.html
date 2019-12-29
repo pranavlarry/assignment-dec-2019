@@ -13,6 +13,10 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly  data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}">
+    <sly  data-sly-call="${clientLib.all @ categories='heroslider'}">
+    </sly>
+</sly>
 <div data-sly-use.carousel="com.adobe.cq.wcm.core.components.models.Carousel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      class="cmp-carousel"
@@ -26,21 +30,14 @@
              role="tabpanel"
              class="cmp-carousel__item${itemList.index==2 ? ' cmp-carousel__item--active' : ''}"
              data-cmp-hook-carousel="item"></div>
-            <div class="cmp-carousel__actions">
-                <button role="button"
-                        class="cmp-carousel__action cmp-carousel__action--previous"
-                        data-cmp-hook-carousel="previous" aria-label="${'Previous' @ i18n}">
-                    <span class="cmp-carousel__action-icon"></span>
-                    <span class="cmp-carousel__action-text"> </ </span>
-                </button>
-                <button role="button"
-                        class="cmp-carousel__action cmp-carousel__action--next"
-                        data-cmp-hook-carousel="next" aria-label="${'Next' @ i18n}">
-                    <span class="cmp-carousel__action-icon"></span>
-                    <span class="cmp-carousel__action-text">></span>
-                </button>
-      		</div>
+
     </div>
+
     <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
          data-sly-test="${(wcmmode.edit || wcmmode.preview) && carousel.items.size < 1}"></sly>
 </div>
+ <div class="cmp-carousel__actions">
+      <button role="button" class="cmp-carousel__action cmp-carousel__action--previous" onclick="prev()">&#x2039 </button>
+      <button role="button" class="cmp-carousel__action cmp-carousel__action--next"  onclick="next()">&#x203a;</button>
+</div>
+

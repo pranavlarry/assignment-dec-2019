@@ -29,7 +29,75 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	private SqlConnectionService sqlConnectionService;
 	
 	@Override
-	public ArrayList getData(String query) {
+    public void insert(String firstName,String lastName,String nationality,String gender,String age,String gotSeaLegs,String partOfOurTeam,String friendOrRelativeWorkingWithUs,String areasOfInterest,String learnAboutThisJob){
+        
+        //Simply write out the values that are posted from the AEM form to the AEM log file
+        //log.info("DB Data posted from an AEM adaptive form - customer_ID: "+customer_ID +" customer_Name: "+customer_Name +" customer_Shipping_Address: "+customer_Shipping_Address +" customer_State "+customer_State) ;
+         
+        Connection c = null;
+         
+        try {
+                          
+              // Create a Connection object
+        	try {
+              c =  sqlConnectionService.getConnection("LariMySql");
+        	}catch (Exception e) {
+              	 StringWriter sw = new StringWriter();
+                 e.printStackTrace(new PrintWriter(sw));
+                 String exceptionAsString = sw.toString();
+                 //e.printStackTrace(); 
+                 log.debug("now what---->"+exceptionAsString);
+                 }
+                   
+               //Use prepared statements to protected against SQL injection attacks
+               PreparedStatement ps = null; 
+                             
+               log.debug(firstName+"---"+lastName+"---"+nationality+"---"+gender+"---"+age+"---"+gotSeaLegs+"---"+partOfOurTeam+"---"+friendOrRelativeWorkingWithUs+"---"+areasOfInterest+"---"+learnAboutThisJob);
+               String insert = "INSERT INTO applicationform.application(firstName,lastName,nationality,gender,age,gotSeaLegs,partOfOurTeam,friendOrRelativeWorkingWithUs,areasOfInterest,learnAboutThisJob,status) VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+               ps = c.prepareStatement(insert);
+                 
+               ps.setString(1,firstName); 
+               ps.setString(2, lastName);
+               ps.setString(3, nationality);
+               ps.setString(4, gender);
+               ps.setString(5, age);
+               ps.setString(6, gotSeaLegs);
+               ps.setString(7,partOfOurTeam);
+               ps.setString(8,friendOrRelativeWorkingWithUs);
+         	   ps.setString(9,areasOfInterest);
+               ps.setString(10,learnAboutThisJob);
+               ps.setString(11, "new");
+               ps.execute();
+                
+        }
+        catch (Exception e) {
+       	 StringWriter sw = new StringWriter();
+         e.printStackTrace(new PrintWriter(sw));
+         String exceptionAsString = sw.toString();
+         //e.printStackTrace(); 
+         log.debug("1---->"+exceptionAsString);
+         }
+        finally {
+			try
+			{
+			   c.close();
+			}
+            
+			catch (SQLException e) {
+				 StringWriter sw = new StringWriter();
+				 e.printStackTrace(new PrintWriter(sw));
+				 String exceptionAsString = sw.toString();
+				 //e.printStackTrace(); 
+				 log.debug("2---->"+exceptionAsString);
+			}
+        }
+        
+  }
+	
+	
+	
+	@Override
+	public ArrayList<ApplicationForm> getData(String query) {
 		// TODO Auto-generated method stub
 		ArrayList<ApplicationForm> applicationForm=new ArrayList<>();
 		Connection c = null;
@@ -44,18 +112,14 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	               log.debug("now what---->"+exceptionAsString);
 	               }
 			ResultSet rs = null;
-			Statement s = c.createStatement();
-	        Statement scount = c.createStatement();
 
 	        PreparedStatement pstmt = null;
-	        PreparedStatement ps = null; 
 			pstmt = c.prepareStatement(query);
 	         rs = pstmt.executeQuery();
 		 
 			while (rs.next()) 
 			 {
 				 applicationForm.add(new ApplicationForm(rs.getDate(1),rs.getTime(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getInt(13)));
-				 log.debug("fucking hell it worked---->"+rs.getString(2));
 			 }
 
 		}catch (Exception e) {
@@ -92,6 +156,8 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 		
 		
 	}
+	
+	
 
 	@Override
 	public void setStatus(String[] id, String[] status) {
@@ -110,11 +176,8 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	               log.debug("now what---->"+exceptionAsString);
 	               }
 			ResultSet rs = null;
-			Statement s = c.createStatement();
-	        Statement scount = c.createStatement();
 
 	        PreparedStatement pstmt = null;
-	        PreparedStatement ps = null; 
 	        String query = null;
 	        for(int i=0;i<id.length;i++) {
 	        	if(query != null) {
@@ -155,4 +218,6 @@ public class MySqlGetDataServiceImpl implements MySqlGetDataService {
 	
 
 	}
+	
+	
 }
